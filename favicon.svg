@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .l { stroke: #1f6f5c; } .n { fill: #1f6f5c; } .w { fill: #a86b32; }
+    @media (prefers-color-scheme: dark) { .l { stroke: #5fc2a5; } .n { fill: #5fc2a5; } .w { fill: #e0a15f; } }
+  </style>
+  <g class="l" stroke-width="2.5" stroke-linecap="round" fill="none">
+    <path d="M16 7 L8 17 M16 7 L24 17 M24 17 L19 26 M24 17 L28 26" />
+  </g>
+  <circle class="n" cx="16" cy="7" r="4" />
+  <circle class="n" cx="8" cy="17" r="3.4" />
+  <circle class="w" cx="24" cy="17" r="3.4" />
+  <circle class="w" cx="19" cy="26" r="2.8" />
+  <circle class="w" cx="28" cy="26" r="2.8" />
+</svg>

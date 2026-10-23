@@ -4,57 +4,131 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Benchwren</title>
-  <meta name="description" content="Benchwren makes small, focused apps for the tools your team already uses.">
-  <style>
-    :root {
-      --bg: #fbfaf8;
-      --text: #1f2328;
-      --muted: #5c6370;
-      --accent: #5b4bdb;
-      --line: #e4e2dd;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #16171a;
-        --text: #e8e6e3;
-        --muted: #a3a6ad;
-        --accent: #a99cff;
-        --line: #2c2e33;
-      }
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-    main { max-width: 640px; margin: 0 auto; padding: 72px 16px 48px; }
-    h1 { font-size: 2.2rem; margin: 0 0 8px; letter-spacing: -0.02em; }
-    .lead { color: var(--muted); margin: 0 0 40px; }
-    h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 0 0 12px; }
-    .app { border-top: 1px solid var(--line); padding: 16px 0; }
-    .app h3 { margin: 0 0 4px; font-size: 1.1rem; }
-    .app p { margin: 0; color: var(--muted); }
-    a { color: var(--accent); }
-    footer { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.85rem; }
-  </style>
+  <meta name="description" content="Benchwren builds small, focused apps for the tools your team already uses, starting with Component Tree for Jira.">
+  <meta name="theme-color" content="#eef2f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#101a17" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/instrument.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="tree.js" defer></script>
+  <script src="tilt.js" defer></script>
 </head>
 <body>
-  <main>
-    <h1>Benchwren</h1>
-    <p class="lead">Small, focused apps for the tools your team already uses. Each one does one job well and runs entirely on the platform it extends.</p>
+  <a class="skip" href="#apps">Skip to the apps</a>
 
-    <h2>Atlassian</h2>
-    <div class="app">
-      <h3><a href="https://docs.benchwren.com/atlassian/component-tree/">Component Tree for Jira</a></h3>
-      <p>Arrange Jira components into a tree, search a whole branch with one JQL clause, and see each work item's full component path.</p>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M16 7 L8 17 M16 7 L24 17 M24 17 L19 26 M24 17 L28 26" fill="none" stroke="var(--spruce)" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="16" cy="7" r="4" fill="var(--spruce)"/>
+          <circle cx="8" cy="17" r="3.4" fill="var(--spruce)"/>
+          <circle cx="24" cy="17" r="3.4" fill="var(--wren)"/>
+          <circle cx="19" cy="26" r="2.8" fill="var(--wren)"/>
+          <circle cx="28" cy="26" r="2.8" fill="var(--wren)"/>
+        </svg>
+        <span>Benchwren</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="#apps">Apps</a>
+        <a href="#approach">How we build</a>
+        <a class="keep" href="https://docs.benchwren.com/">Docs</a>
+      </nav>
     </div>
+  </header>
 
-    <footer>
-      <p><a href="https://docs.benchwren.com/">Documentation</a></p>
-      <p>© 2026 Benchwren. Benchwren apps are independent and are not made or endorsed by the platforms they extend. Atlassian and Jira are trademarks of Atlassian Pty Ltd.</p>
-    </footer>
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <h1>Small apps for the tools your team already uses.</h1>
+          <p class="lead">Benchwren builds focused add-ons for Jira today, and for Slack and Google Workspace next. Each one does one job, runs on the platform it extends, and keeps your data where it is.</p>
+          <div class="actions">
+            <a class="button button-primary" href="#apps">See the apps</a>
+            <a class="button button-quiet" href="https://docs.benchwren.com/">Read the docs</a>
+          </div>
+        </div>
+
+        <figure class="stage" aria-labelledby="stage-caption">
+          <div class="stage-canvas" id="tree-stage">
+            <canvas id="tree" role="img" aria-label="A component tree in 3D. Platform holds Auth and Payments, Payments holds Checkout and Refunds, and Mobile holds iOS and Android."></canvas>
+            <p class="stage-hint" id="stage-hint">Drag to turn it</p>
+          </div>
+          <figcaption id="stage-caption" class="query-note">Component Tree for Jira, in miniature. Pick a branch to see the search it writes.</figcaption>
+          <p class="query" aria-live="polite"><span class="fn">component in componentBranch</span>(<span class="arg">"SHOP"</span>, <span class="arg" id="query-name">"Payments"</span>)</p>
+          <ul class="branches" id="branches" aria-label="Branches"></ul>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="apps">
+      <div class="wrap">
+        <h2>Apps, by platform</h2>
+
+        <div class="platform">
+          <h3>Atlassian</h3>
+          <div class="product">
+            <article class="product-card" id="product-card">
+              <div>
+                <p class="status">Coming soon to the Atlassian Marketplace</p>
+                <h4>Component Tree for Jira</h4>
+                <p class="summary">Jira components are a flat list. Component Tree turns them into a tree, so you can find everything in a branch at once and see where each work item sits.</p>
+                <div class="product-links">
+                  <a class="button button-primary" href="https://docs.benchwren.com/atlassian/component-tree/">Read the docs</a>
+                  <a class="button button-quiet" href="https://docs.benchwren.com/atlassian/component-tree/getting-started/">Getting started</a>
+                </div>
+              </div>
+              <ul class="features">
+                <li>Arrange components into parents and children by drag and drop.</li>
+                <li>Search a whole branch with <code>componentBranch</code> in any filter or board.</li>
+                <li>See each work item's full path, like Platform / Payments / Refunds.</li>
+                <li>Runs on Atlassian. Nothing leaves your Jira site.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+
+        <div class="platform platform-planned">
+          <h3>Slack</h3>
+          <p>Planned. Nothing to install yet.</p>
+        </div>
+
+        <div class="platform platform-planned">
+          <h3>Google Workspace</h3>
+          <p>Planned. Nothing to install yet.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="approach">
+      <div class="wrap">
+        <h2>How we build</h2>
+        <dl class="principles">
+          <div>
+            <dt>Runs where you work</dt>
+            <dd>No Benchwren servers. Each app runs on the platform's own cloud, so your data never leaves it.</dd>
+          </div>
+          <div>
+            <dt>One job each</dt>
+            <dd>An app solves one problem completely, and stays out of the way of everything else.</dd>
+          </div>
+          <div>
+            <dt>Docs you can finish</dt>
+            <dd>Every app ships with plain-English docs, including its limits and how it handles your data.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© 2026 Benchwren. Benchwren apps are independent and are not made or endorsed by the platforms they extend. Atlassian and Jira are trademarks of Atlassian Pty Ltd.</p>
+      <nav aria-label="Footer">
+        <a href="https://docs.benchwren.com/">Docs</a>
+      </nav>
+    </div>
+  </footer>
 </body>
 </html>
