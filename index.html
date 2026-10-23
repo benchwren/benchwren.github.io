@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Benchwren</title>
+  <meta name="description" content="Benchwren makes small, focused apps for the tools your team already uses.">
+  <style>
+    :root {
+      --bg: #fbfaf8;
+      --text: #1f2328;
+      --muted: #5c6370;
+      --accent: #5b4bdb;
+      --line: #e4e2dd;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #16171a;
+        --text: #e8e6e3;
+        --muted: #a3a6ad;
+        --accent: #a99cff;
+        --line: #2c2e33;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    main { max-width: 640px; margin: 0 auto; padding: 72px 16px 48px; }
+    h1 { font-size: 2.2rem; margin: 0 0 8px; letter-spacing: -0.02em; }
+    .lead { color: var(--muted); margin: 0 0 40px; }
+    h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 0 0 12px; }
+    .app { border-top: 1px solid var(--line); padding: 16px 0; }
+    .app h3 { margin: 0 0 4px; font-size: 1.1rem; }
+    .app p { margin: 0; color: var(--muted); }
+    a { color: var(--accent); }
+    footer { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Benchwren</h1>
+    <p class="lead">Small, focused apps for the tools your team already uses. Each one does one job well and runs entirely on the platform it extends.</p>
+
+    <h2>Atlassian</h2>
+    <div class="app">
+      <h3><a href="https://docs.benchwren.com/atlassian/component-tree/">Component Tree for Jira</a></h3>
+      <p>Arrange Jira components into a tree, search a whole branch with one JQL clause, and see each work item's full component path.</p>
+    </div>
+
+    <footer>
+      <p><a href="https://docs.benchwren.com/">Documentation</a></p>
+      <p>© 2026 Benchwren. Benchwren apps are independent and are not made or endorsed by the platforms they extend. Atlassian and Jira are trademarks of Atlassian Pty Ltd.</p>
+    </footer>
+  </main>
+</body>
+</html>
