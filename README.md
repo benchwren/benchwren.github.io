@@ -10,4 +10,4 @@ The Benchwren home page, served by GitHub Pages from `main` at `https://benchwre
 
 Product docs live in the separate `benchwren/docs` repo at `https://docs.benchwren.com`.
 
-Preview locally with `python3 -m http.server 8765 --directory benchwren-home` from the workspace root.
+Preview locally with `python3 -m http.server 8765` from this folder (or the `benchwren-home` config in `.claude/launch.json`).
